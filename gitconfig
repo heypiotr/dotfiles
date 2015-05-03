@@ -1,0 +1,14 @@
+[user]
+	name = Piotr Krawiec
+	email = piotr@krawiec.me
+[push]
+	default = simple
+[alias]
+	ci = commit
+	co = checkout
+	d = diff
+	dc = diff --cached
+	l = log
+	s = status
+[core]
+	excludesfile = ~/.gitignore.global

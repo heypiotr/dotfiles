@@ -1,0 +1,24 @@
+# partial history completion, bound to arrow keys
+"\e[B": history-search-forward
+"\e[A": history-search-backward
+
+# no sounds, please
+set bell-style none
+
+# cycle through the completion options
+Tab: menu-complete
+
+# colorful auto-completion
+set colored-stats on
+# case-insensitive auto-completion
+set completion-ignore-case on
+# auto-add slash to symlinks to directories
+set mark-symlinked-directories on
+# auto-complete hidden files only when "." is explictly provided
+set match-hidden-files off
+# display the common prefix before cycling through matching completions
+set menu-complete-display-prefix on
+# immediately show ambiguous matches, who cares about the bell first
+set show-all-if-ambiguous on
+# avoid duplication during mid-word completion (Make<tab>file => Makefilefile)
+set skip-completed-text off
