@@ -3,17 +3,18 @@
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # bash
-ln -sfvnT ${BASEDIR}/bashrc ~/.bashrc
-ln -sfvnT ${BASEDIR}/bash_profile ~/.bash_profile
-ln -sfvnT ${BASEDIR}/inputrc ~/.inputrc
+ln -sfvn ${BASEDIR}/bashrc ~/.bashrc
+ln -sfvn ${BASEDIR}/bash_profile ~/.bash_profile
+ln -sfvn ${BASEDIR}/inputrc ~/.inputrc
 
 # vim
-ln -sfvnT ${BASEDIR}/vimrc ~/.vimrc
-ln -sfvnT ${BASEDIR}/vim ~/.vim
+[[ -d ~/.vim ]] && rm -rf ~/.vim
+ln -sfvn ${BASEDIR}/vim ~/.vim
+ln -sfvn ${BASEDIR}/vimrc ~/.vimrc
 
 # git
-ln -sfvnT ${BASEDIR}/gitconfig ~/.gitconfig
-ln -sfvnT ${BASEDIR}/gitignore.global ~/.gitignore.global
+ln -sfvn ${BASEDIR}/gitconfig ~/.gitconfig
+ln -sfvn ${BASEDIR}/gitignore.global ~/.gitignore.global
 
 # ruby
-ln -sfvnT ${BASEDIR}/gemrc ~/.gemrc
+ln -sfvn ${BASEDIR}/gemrc ~/.gemrc
