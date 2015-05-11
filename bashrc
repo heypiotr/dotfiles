@@ -40,6 +40,7 @@ alias ll='ls -l'
 alias lla='ls -lA'
 
 alias g='git'
+complete -o default -o nospace -F _git g
 
 alias be='bundle exec'
 
