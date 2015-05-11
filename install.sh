@@ -18,3 +18,6 @@ ln -sfvn ${BASEDIR}/gitignore.global ~/.gitignore.global
 
 # ruby
 ln -sfvn ${BASEDIR}/gemrc ~/.gemrc
+
+# irb
+ln -sfvn ${BASEDIR}/irbrc ~/.irbrc
