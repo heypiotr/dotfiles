@@ -15,8 +15,8 @@ case $OSTYPE in
   darwin*)
     alias ls='ls -G'
 
-    if [[ -f $(brew --prefix)/etc/bash_completion ]]; then
-      . $(brew --prefix)/etc/bash_completion
+    if [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
+      . $(brew --prefix)/share/bash-completion/bash_completion
     fi
     ;;
   *)
