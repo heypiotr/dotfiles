@@ -11,6 +11,10 @@ ln -sfvn ${BASEDIR}/inputrc ~/.inputrc
 [[ -d ~/.vim ]] && rm -rf ~/.vim
 ln -sfvn ${BASEDIR}/vim ~/.vim
 ln -sfvn ${BASEDIR}/vimrc ~/.vimrc
+[[ ! -f ~/.vim/autoload/plug.vim ]] && \
+  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim \
+  && vim +PlugInstall +qall
 
 # git
 ln -sfvn ${BASEDIR}/gitconfig ~/.gitconfig
