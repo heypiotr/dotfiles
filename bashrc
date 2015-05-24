@@ -40,7 +40,8 @@ alias ll='ls -l'
 alias lla='ls -lA'
 
 alias g='git'
-complete -o default -o nospace -F _git g
+_git_g_alias() { _xfunc git _git; }
+complete -o default -o nospace -F _git_g_alias g
 
 alias be='bundle exec'
 
