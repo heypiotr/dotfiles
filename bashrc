@@ -15,18 +15,15 @@ case $OSTYPE in
   darwin*)
     alias ls='ls -G'
 
-    if [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
-      . $(brew --prefix)/share/bash-completion/bash_completion
-    fi
+    [[ -f $(brew --prefix)/share/bash-completion/bash_completion ]] && . $(brew --prefix)/share/bash-completion/bash_completion
     ;;
   *)
     alias ls='ls --color=auto'
     ;;
 esac
 
-if [[ -d /usr/local/var/rbenv ]]; then export RBENV_ROOT='/usr/local/var/rbenv'; fi
-if [[ -d $HOME/.rbenv/bin ]]; then export PATH="$HOME/.rbenv/bin:$PATH"; fi
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+[[ -d $HOME/.rbenv/bin ]] && export PATH="$HOME/.rbenv/bin:$PATH"
+which rbenv > /dev/null && eval "$(rbenv init -)"
 
 export GREP_OPTIONS='-n --color=auto'
 
