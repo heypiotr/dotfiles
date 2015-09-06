@@ -14,7 +14,6 @@ export EDITOR=vim
 case $OSTYPE in
   darwin*)
     alias ls='ls -G'
-
     [[ -f $(brew --prefix)/share/bash-completion/bash_completion ]] && . $(brew --prefix)/share/bash-completion/bash_completion
     ;;
   *)
@@ -46,3 +45,8 @@ export LSCOLORS=exfxcxafbxgxdxabagacad
 export LS_COLORS='di=34:ln=35:so=32:pi=30;45:ex=31:bd=36:cd=33:su=30;41:sg=30;46:tw=30;42:ow=30;43:st=34'
 
 ulimit -n 4096
+
+if [[ -d $HOME/.nvm ]]; then
+  export NVM_DIR='~/.nvm'
+  source $(brew --prefix nvm)/nvm.sh
+fi
