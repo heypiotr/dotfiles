@@ -47,6 +47,6 @@ export LS_COLORS='di=34:ln=35:so=32:pi=30;45:ex=31:bd=36:cd=33:su=30;41:sg=30;46
 ulimit -n 4096
 
 if [[ -d $HOME/.nvm ]]; then
-  export NVM_DIR='~/.nvm'
+  export NVM_DIR="$HOME/.nvm"
   source $(brew --prefix nvm)/nvm.sh
 fi
