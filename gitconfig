@@ -12,3 +12,5 @@
 	s = status
 [core]
 	excludesfile = ~/.gitignore.global
+[credential]
+	helper = osxkeychain
