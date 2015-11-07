@@ -24,3 +24,7 @@ ln -sfvn ${BASEDIR}/gemrc ~/.gemrc
 
 # irb
 ln -sfvn ${BASEDIR}/irbrc ~/.irbrc
+
+# ngrok
+mkdir -p ~/.ngrok2
+ln -sfvn ${BASEDIR}/ngrok.yml ~/.ngrok2/ngrok.yml
