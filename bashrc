@@ -46,4 +46,6 @@ alias reset-launchpad='defaults write com.apple.dock ResetLaunchPad -bool true &
 export LSCOLORS=exfxcxafbxgxdxabagacad
 export LS_COLORS='di=34:ln=35:so=32:pi=30;45:ex=31:bd=36:cd=33:su=30;41:sg=30;46:tw=30;42:ow=30;43:st=34'
 
+complete -C aws_completer aws
+
 ulimit -n 4096
