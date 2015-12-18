@@ -1,0 +1,4 @@
+ControlMaster auto
+ControlPath ~/.ssh/multiplex/%r@%h:%p
+ControlPersist yes
+ServerAliveInterval 50

@@ -28,3 +28,7 @@ ln -sfvn ${BASEDIR}/irbrc ~/.irbrc
 # ngrok
 mkdir -p ~/.ngrok2
 ln -sfvn ${BASEDIR}/ngrok.yml ~/.ngrok2/ngrok.yml
+
+# ssh
+mkdir -p ~/.ssh/multiplex
+ln -sfvn ${BASEDIR}/ssh_config ~/.ssh/config
