@@ -49,3 +49,6 @@ export LS_COLORS='di=34:ln=35:so=32:pi=30;45:ex=31:bd=36:cd=33:su=30;41:sg=30;46
 complete -C aws_completer aws
 
 ulimit -n 4096
+
+export NVM_DIR="$HOME/.nvm"
+alias source-nvm='. "$(brew --prefix nvm)/nvm.sh"'
