@@ -24,7 +24,8 @@ esac
 [[ -d $HOME/.rbenv/bin ]] && export PATH="$HOME/.rbenv/bin:$PATH"
 which rbenv > /dev/null && eval "$(rbenv init -)"
 
-GREP_OPTIONS='-n --color=auto'
+export GREP_OPTIONS='-n --color=auto'
+export LESS='-R'
 
 alias ..='cd ..'
 alias ...='cd ../..'
