@@ -21,11 +21,8 @@ case $OSTYPE in
     ;;
 esac
 
-[[ -d $HOME/.rbenv/bin ]] && export PATH="$HOME/.rbenv/bin:$PATH"
-which rbenv > /dev/null && eval "$(rbenv init -)"
-
-export GREP_OPTIONS='-n --color=auto'
-export LESS='-R'
+alias grep='grep --color=auto'
+alias less='less -R'
 
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -53,3 +50,5 @@ ulimit -n 4096
 
 export NVM_DIR="$HOME/.nvm"
 alias source-nvm='. "$(brew --prefix nvm)/nvm.sh"'
+
+which rbenv > /dev/null && eval "$(rbenv init -)"
