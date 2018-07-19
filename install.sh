@@ -29,6 +29,10 @@ ln -sfvn ${BASEDIR}/irbrc ~/.irbrc
 mkdir -p ~/.ngrok2
 ln -sfvn ${BASEDIR}/ngrok.yml ~/.ngrok2/ngrok.yml
 
+# mitmproxy
+mkdir -p ~/.mitmproxy
+ln -sfvn ${BASEDIR}/mitmproxy_config.yaml ~/.mitmproxy/config.yaml
+
 # ssh
 mkdir -p ~/.ssh/multiplex
 ln -sfvn ${BASEDIR}/ssh_config ~/.ssh/config
