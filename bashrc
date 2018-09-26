@@ -12,12 +12,12 @@ export HISTCONTROL=ignoreboth
 export EDITOR=vim
 
 case $OSTYPE in
-  darwin*)
-    alias ls='ls -G'
-    ;;
-  *)
-    alias ls='ls --color=auto'
-    ;;
+	darwin*)
+		alias ls='ls -G'
+		;;
+	*)
+		alias ls='ls --color=auto'
+		;;
 esac
 
 export LSCOLORS=exfxcxafbxgxdxabagacad
@@ -46,29 +46,21 @@ alias reset-launchpad='defaults write com.apple.dock ResetLaunchPad -bool true &
 ulimit -n 4096
 
 export NVM_DIR="$HOME/.nvm"
-alias source-nvm='. "$(brew --prefix nvm)/nvm.sh"'
+[ -f /usr/local/opt/nvm/nvm.sh ] && . /usr/local/opt/nvm/nvm.sh --no-use
 
 which rbenv > /dev/null && eval "$(rbenv init -)"
 
 export PATH="$HOME/.fastlane/bin:$PATH"
 
-if [ -f /usr/local/share/bash-completion/bash_completion ]; then
-  . /usr/local/share/bash-completion/bash_completion
-fi
+[ -f /usr/local/share/bash-completion/bash_completion ] \
+	&& . /usr/local/share/bash-completion/bash_completion
 
-if type brew 2&>/dev/null; then
-  for completion_file in $(brew --prefix)/etc/bash_completion.d/*; do
-    source "$completion_file"
-  done
-fi
-
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash ] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash ] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash
+[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash ] \
+	&& . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash
+[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash ] \
+	&& . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash
 
 export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$PATH"
+
+export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
