@@ -55,10 +55,12 @@ export PATH="$HOME/.fastlane/bin:$PATH"
 [ -f /usr/local/share/bash-completion/bash_completion ] \
 	&& . /usr/local/share/bash-completion/bash_completion
 
-[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash ] \
-	&& . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash
-[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash ] \
-	&& . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash ] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash ] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash
 
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$PATH"
