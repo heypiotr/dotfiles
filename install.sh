@@ -36,3 +36,6 @@ ln -sfvn ${BASEDIR}/mitmproxy_config.yaml ~/.mitmproxy/config.yaml
 # ssh
 mkdir -p ~/.ssh/multiplex
 ln -sfvn ${BASEDIR}/ssh_config ~/.ssh/config
+
+# zephyr
+ln -sfvn ${BASEDIR}/zephyrrc ~/.zephyrrc
