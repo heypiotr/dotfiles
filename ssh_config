@@ -1,13 +1,13 @@
-ControlMaster auto
-ControlPath ~/.ssh/multiplex/%r@%h:%p
-ControlPersist yes
-ServerAliveInterval 50
-
-Host *
- IgnoreUnknown UseKeychain
- UseKeychain yes
- AddKeysToAgent yes
-
 Host raspberrypi.local
  User pi
  ForwardAgent yes
+
+Host *
+ ControlMaster auto
+ ControlPath ~/.ssh/multiplex/%r@%h:%p
+ ControlPersist yes
+
+ ServerAliveInterval 50
+
+ IgnoreUnknown UseKeychain
+ UseKeychain yes
