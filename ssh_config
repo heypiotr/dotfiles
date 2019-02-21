@@ -4,6 +4,10 @@ ControlPersist yes
 ServerAliveInterval 50
 
 Host *
+ IgnoreUnknown UseKeychain
  UseKeychain yes
  AddKeysToAgent yes
- IdentityFile ~/.ssh/id_rsa
+
+Host raspberrypi.local
+ User pi
+ ForwardAgent yes
