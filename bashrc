@@ -65,4 +65,6 @@ export PATH="$HOME/.fastlane/bin:$PATH"
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$PATH"
 
-export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
+if [ -f /usr/libexec/java_home ]; then
+	export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
+fi
