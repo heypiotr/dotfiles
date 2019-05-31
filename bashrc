@@ -1,9 +1,12 @@
 export PS1='\[\e[32m\]\u\[\e[38;05;8m\] at \[\e[33m\]\h\[\e[38;05;8m\] in \[\e[36m\]\w$(__git_ps1 "\[\e[38;05;8m\] on \[\e[31m\]%s")\[\e[0m\]
 \[\e[38;05;8m\]$ \[\e[0m\]'
 
+export PROMPT_COMMAND='history -a'
+
 shopt -s cdspell
 shopt -s checkwinsize
 shopt -s histappend
+shopt -s cmdhist
 
 export HISTSIZE=1000
 export HISTFILESIZE=10000
