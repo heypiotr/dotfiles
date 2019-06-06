@@ -74,3 +74,5 @@ export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-
 if [ -f /usr/libexec/java_home ]; then
 	export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
 fi
+
+export PATH="$HOME/.cargo/bin:$PATH"
