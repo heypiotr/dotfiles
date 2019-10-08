@@ -1,8 +1,6 @@
 export PS1='\[\e[32m\]\u\[\e[38;05;8m\] at \[\e[33m\]\h\[\e[38;05;8m\] in \[\e[36m\]\w$(__git_ps1 "\[\e[38;05;8m\] on \[\e[31m\]%s")\[\e[0m\]
 \[\e[38;05;8m\]$ \[\e[0m\]'
 
-export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND; }history -a"
-
 shopt -s cdspell
 shopt -s checkwinsize
 shopt -s histappend
@@ -39,8 +37,7 @@ alias ll='ls -l'
 alias lla='ls -lA'
 
 alias g='git'
-_git_g_alias() { _xfunc git _git; }
-complete -o default -o nospace -F _git_g_alias g
+complete -o default -o nospace -F _git g
 
 alias be='bundle exec'
 
@@ -48,31 +45,28 @@ alias reset-launchpad='defaults write com.apple.dock ResetLaunchPad -bool true &
 
 ulimit -n 4096
 
+[ -r "/usr/local/etc/profile.d/bash_completion.sh" ] && . "/usr/local/etc/profile.d/bash_completion.sh"
+
+[ -f "$HOME/.bashrc.local" ] && . "$HOME/.bashrc.local"
+
+# nvm
 export NVM_DIR="$HOME/.nvm"
-[ -f /usr/local/opt/nvm/nvm.sh ] && . /usr/local/opt/nvm/nvm.sh --no-use
+[ -f "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh" --no-use
 
-which rbenv > /dev/null && eval "$(rbenv init -)"
+# rbenv
+which rbenv >/dev/null && eval "$(rbenv init -)"
 
-export PATH="$HOME/.fastlane/bin:$PATH"
+# fastlane
+[ -d "$HOME/.fastlane/bin" ] && export PATH="$HOME/.fastlane/bin:$PATH"
 
-[ -f /usr/local/share/bash-completion/bash_completion ] \
-	&& . /usr/local/share/bash-completion/bash_completion
-
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash ] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash ] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash
-# tabtab source for slss package
-# uninstall by removing these lines or running `tabtab uninstall slss`
-[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.bash ] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.bash
-
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$PATH"
-
-if [ -f /usr/libexec/java_home ]; then
-	export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
+# android
+if [ -d "$HOME/Library/Android/sdk" ]; then
+	export ANDROID_HOME="$HOME/Library/Android/sdk"
+	export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$PATH"
 fi
 
-export PATH="$HOME/.cargo/bin:$PATH"
+# java
+/usr/libexec/java_home -v 1.8 >/dev/null 2>&1 && export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
+
+# rust
+[ -d "$HOME/.cargo/bin" ] && export PATH="$HOME/.cargo/bin:$PATH"
