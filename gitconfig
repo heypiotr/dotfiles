@@ -5,13 +5,19 @@
 [push]
 	default = simple
 [alias]
+	b = branch
 	ci = commit
 	co = checkout
 	d = diff
 	dc = diff --cached
-	l = log
-	s = status
+	f = fetch
 	graph = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+	l = log
+	p = pull
+	pm = pull origin master
+	rs = reset
+	rt = restore
+	s = status
 [core]
 	excludesfile = ~/.gitignore.global
 [pull]
