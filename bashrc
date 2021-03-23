@@ -36,16 +36,24 @@ alias la='ls -A'
 alias ll='ls -l'
 alias lla='ls -lA'
 
+[ -f "/usr/local/etc/profile.d/bash_completion.sh" ] && . "/usr/local/etc/profile.d/bash_completion.sh"
+
 alias g='git'
-complete -o default -o nospace -F _git g
+__git_complete g __git_main
+git-cleanup ()
+{
+	git fetch -p
+	for branch in `git for-each-ref --format '%(refname) %(upstream:track)' refs/heads | awk '$2 == "[gone]" {sub("refs/heads/", "", $1); print $1}'`
+	do
+		git branch -D $branch
+	done
+}
 
 alias be='bundle exec'
 
 alias reset-launchpad='defaults write com.apple.dock ResetLaunchPad -bool true && killall Dock'
 
 ulimit -n 4096
-
-[ -r "/usr/local/etc/profile.d/bash_completion.sh" ] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
 [ -f "$HOME/.bashrc.local" ] && . "$HOME/.bashrc.local"
 
