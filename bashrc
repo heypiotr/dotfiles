@@ -34,6 +34,7 @@ alias less='less -R'
 
 ulimit -n 4096
 
+[ -f "/usr/share/bash-completion/bash_completion" ] && . "/usr/share/bash-completion/bash_completion"
 [ -f "/usr/local/etc/profile.d/bash_completion.sh" ] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
 [ -f "$HOME/.bashrc.local" ] && . "$HOME/.bashrc.local"
@@ -46,6 +47,7 @@ fi
 
 # git
 alias g='git'
+[ -f "/usr/share/bash-completion/completions/git" ] && . "/usr/share/bash-completion/completions/git"
 __git_complete g __git_main
 git-cleanup ()
 {
