@@ -1,6 +1,7 @@
 set nocompatible
 
 call plug#begin()
+Plug 'NLKNguyen/papercolor-theme'
 Plug 'chriskempson/base16-vim'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
