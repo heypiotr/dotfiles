@@ -7,6 +7,28 @@ ln -sfvn ${BASEDIR}/bashrc ~/.bashrc
 ln -sfvn ${BASEDIR}/bash_profile ~/.bash_profile
 ln -sfvn ${BASEDIR}/inputrc ~/.inputrc
 
+# git
+ln -sfvn ${BASEDIR}/gitconfig ~/.gitconfig
+ln -sfvn ${BASEDIR}/gitignore.global ~/.gitignore.global
+
+# irb
+ln -sfvn ${BASEDIR}/irbrc ~/.irbrc
+
+# mitmproxy
+mkdir -p ~/.mitmproxy
+ln -sfvn ${BASEDIR}/mitmproxy_config.yaml ~/.mitmproxy/config.yaml
+
+# ngrok
+mkdir -p ~/.ngrok2
+ln -sfvn ${BASEDIR}/ngrok.yml ~/.ngrok2/ngrok.yml
+
+# ruby
+ln -sfvn ${BASEDIR}/gemrc ~/.gemrc
+
+# ssh
+mkdir -p ~/.ssh/multiplex
+ln -sfvn ${BASEDIR}/ssh_config ~/.ssh/config
+
 # vim
 ln -sfvn ${BASEDIR}/vimrc ~/.vimrc
 ln -sfvn ${BASEDIR}/vimrc.plug ~/.vimrc.plug
@@ -14,28 +36,6 @@ ln -sfvn ${BASEDIR}/vimrc.plug ~/.vimrc.plug
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim \
   && vim -u ~/.vimrc.plug +PlugInstall +qall
-
-# git
-ln -sfvn ${BASEDIR}/gitconfig ~/.gitconfig
-ln -sfvn ${BASEDIR}/gitignore.global ~/.gitignore.global
-
-# ruby
-ln -sfvn ${BASEDIR}/gemrc ~/.gemrc
-
-# irb
-ln -sfvn ${BASEDIR}/irbrc ~/.irbrc
-
-# ngrok
-mkdir -p ~/.ngrok2
-ln -sfvn ${BASEDIR}/ngrok.yml ~/.ngrok2/ngrok.yml
-
-# mitmproxy
-mkdir -p ~/.mitmproxy
-ln -sfvn ${BASEDIR}/mitmproxy_config.yaml ~/.mitmproxy/config.yaml
-
-# ssh
-mkdir -p ~/.ssh/multiplex
-ln -sfvn ${BASEDIR}/ssh_config ~/.ssh/config
 
 # zephyr
 ln -sfvn ${BASEDIR}/zephyrrc ~/.zephyrrc
