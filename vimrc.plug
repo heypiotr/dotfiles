@@ -1,6 +1,8 @@
 set nocompatible
 
 call plug#begin()
+Plug 'bkad/CamelCaseMotion'
+Plug 'easymotion/vim-easymotion'
 Plug 'sonph/onehalf', {'rtp': 'vim'}
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
