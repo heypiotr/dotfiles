@@ -34,10 +34,10 @@ alias less='less -R'
 
 ulimit -n 4096
 
-[ -f "/usr/share/bash-completion/bash_completion" ] && . "/usr/share/bash-completion/bash_completion"
-[ -f "/usr/local/etc/profile.d/bash_completion.sh" ] && . "/usr/local/etc/profile.d/bash_completion.sh"
-
 [ -f "$HOME/.bashrc.local" ] && . "$HOME/.bashrc.local"
+
+[ -f "/usr/share/bash-completion/bash_completion" ] && . "/usr/share/bash-completion/bash_completion"
+[ -n "$HOMEBREW_PREFIX" ] && [ -f "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ] && . "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
 
 # android
 if [ -d "$HOME/Library/Android/sdk" ]; then
