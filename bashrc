@@ -64,10 +64,6 @@ git-cleanup ()
 # macos
 alias reset-launchpad='defaults write com.apple.dock ResetLaunchPad -bool true && killall Dock'
 
-# nvm
-export NVM_DIR="$HOME/.nvm"
-[ -f "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh" --no-use
-
 # ruby
 alias be='bundle exec'
 which rbenv >/dev/null && eval "$(rbenv init -)"
