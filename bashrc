@@ -37,8 +37,20 @@ ulimit -n 4096
 
 [ -f "$HOME/.bashrc.local" ] && . "$HOME/.bashrc.local"
 
-[ -f "/usr/share/bash-completion/bash_completion" ] && . "/usr/share/bash-completion/bash_completion"
-[ -n "$HOMEBREW_PREFIX" ] && [ -f "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ] && . "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
+# homebrew
+# ... on macos
+if [ -f "/usr/local/bin/brew" ]; then
+	eval "$(/usr/local/bin/brew shellenv)"
+
+	[ -f "/usr/local/etc/profile.d/bash_completion.sh" ] && . "/usr/local/etc/profile.d/bash_completion.sh"
+# ... on linux
+elif [ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
+	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+	for i in "/home/linuxbrew/.linuxbrew/etc/bash_completion.d"/*; do
+		. "$i"
+	done
+fi
 
 # android
 if [ -d "$HOME/Library/Android/sdk" ]; then
