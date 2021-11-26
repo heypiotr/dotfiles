@@ -35,6 +35,8 @@ alias less='less -R'
 
 ulimit -n 4096
 
+export PATH="$HOME/.local/bin:$PATH"
+
 [ -f "$HOME/.bashrc.local" ] && . "$HOME/.bashrc.local"
 
 # homebrew
