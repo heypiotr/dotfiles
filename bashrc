@@ -84,4 +84,4 @@ alias be='bundle exec'
 which rbenv >/dev/null && eval "$(rbenv init -)"
 
 # rust
-[ -d "$HOME/.cargo/bin" ] && export PATH="$HOME/.cargo/bin:$PATH"
+[ -f "$HOME/.cargo/env" ] &&  . "$HOME/.cargo/env"

@@ -9,6 +9,7 @@
 	l = log
 	p = pull
 	po = pull origin
+	pushf = push --force-with-lease --force-if-includes
 	rs = reset
 	rt = restore
 	s = status
