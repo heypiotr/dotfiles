@@ -79,6 +79,12 @@ git-cleanup ()
 # macos
 alias reset-launchpad='defaults write com.apple.dock ResetLaunchPad -bool true && killall Dock'
 
+# node
+if which n >/dev/null; then
+	export N_PREFIX="$HOME/.local"
+	export N_PRESERVE_NPM=1
+fi
+
 # ruby
 alias be='bundle exec'
 which rbenv >/dev/null && eval "$(rbenv init -)"
