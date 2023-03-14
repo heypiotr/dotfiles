@@ -34,3 +34,5 @@
 	name = Piotr Krawiec
 	email = piotr@krawiec.me
 	signingkey = 6FE33FC1
+[rerere]
+	enabled = true
