@@ -87,6 +87,11 @@ if which n >/dev/null; then
 	export N_PRESERVE_NPM=1
 fi
 
+# postgres
+psql-local() {
+	psql postgres://$1:$1@localhost:5432/$1?sslmode=disable
+}
+
 # ruby
 alias be='bundle exec'
 which rbenv >/dev/null && eval "$(rbenv init -)"
