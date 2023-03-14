@@ -35,10 +35,6 @@ alias less='less -R'
 
 ulimit -n 4096
 
-export PATH="$HOME/.local/bin:$PATH"
-
-[ -f "$HOME/.bashrc.local" ] && . "$HOME/.bashrc.local"
-
 # homebrew
 # ... on macos
 if [ -f "/usr/local/bin/brew" ]; then
@@ -53,6 +49,10 @@ elif [ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
 		. "$i"
 	done
 fi
+
+# local overrides
+export PATH="$HOME/.local/bin:$PATH"
+[ -f "$HOME/.bashrc.local" ] && . "$HOME/.bashrc.local"
 
 # android
 if [ -d "$HOME/Library/Android/sdk" ]; then
