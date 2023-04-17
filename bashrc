@@ -72,7 +72,7 @@ git-cleanup() {
 	done
 }
 git-fixup() {
-	git commit --fixup="$1" && git rebase -i "$1^" --autosquash
+	git commit --fixup="$1" && git rebase -i "$1^" --autosquash --update-refs
 }
 
 # java
