@@ -18,10 +18,6 @@ ln -sfvn ${BASEDIR}/irbrc ~/.irbrc
 mkdir -p ~/.mitmproxy
 ln -sfvn ${BASEDIR}/mitmproxy_config.yaml ~/.mitmproxy/config.yaml
 
-# ngrok
-mkdir -p ~/.ngrok2
-ln -sfvn ${BASEDIR}/ngrok.yml ~/.ngrok2/ngrok.yml
-
 # ruby
 ln -sfvn ${BASEDIR}/gemrc ~/.gemrc
 
