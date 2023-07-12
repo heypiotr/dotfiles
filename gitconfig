@@ -5,7 +5,6 @@
 	d = diff
 	dc = diff --cached
 	f = fetch
-	graph = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
 	l = log
 	p = pull
 	po = pull origin
@@ -30,9 +29,9 @@
 	default = simple
 [rebase]
 	autoStash = true
+[rerere]
+	enabled = true
 [user]
 	name = Piotr Krawiec
 	email = piotr@krawiec.me
 	signingkey = 6FE33FC1
-[rerere]
-	enabled = true
