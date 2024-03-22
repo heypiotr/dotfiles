@@ -1,6 +1,7 @@
 [alias]
 	b = branch
 	ci = commit
+	cp = cherry-pick
 	co = checkout
 	d = diff
 	dc = diff --cached
