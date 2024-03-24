@@ -34,6 +34,7 @@ elif [ -d '/home/linuxbrew/.linuxbrew' ]; then
     HOMEBREW_PREFIX='/home/linuxbrew/.linuxbrew'
 fi
 if [ -n "$HOMEBREW_PREFIX" ]; then
+    [ -r "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ] && . "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
     eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
     for i in "$HOMEBREW_PREFIX/etc/bash_completion.d"/*; do
         . "$i"
