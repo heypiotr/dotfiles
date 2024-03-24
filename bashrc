@@ -13,18 +13,10 @@ export HISTCONTROL=ignoreboth
 
 export EDITOR=vim
 
-case $OSTYPE in
-	darwin*)
-		alias ls='ls -G'
-		;;
-	*)
-		alias ls='ls --color=auto'
-		;;
-esac
-
 export LSCOLORS=exfxcxafbxgxdxabagacad
 export LS_COLORS='di=34:ln=35:so=32:pi=30;45:ex=31:bd=36:cd=33:su=30;41:sg=30;46:tw=30;42:ow=30;43:st=34'
 
+alias ls='ls --color=auto'
 alias l='ls'
 alias la='ls -A'
 alias ll='ls -l'
@@ -36,18 +28,16 @@ alias less='less -R'
 ulimit -n 4096
 
 # homebrew
-# ... on macos
-if [ -f "/usr/local/bin/brew" ]; then
-	eval "$(/usr/local/bin/brew shellenv)"
-
-	[ -f "/usr/local/etc/profile.d/bash_completion.sh" ] && . "/usr/local/etc/profile.d/bash_completion.sh"
-# ... on linux
-elif [ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
-	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
-	for i in "/home/linuxbrew/.linuxbrew/etc/bash_completion.d"/*; do
-		. "$i"
-	done
+if [ -d '/opt/homebrew' ]; then
+    HOMEBREW_PREFIX='/opt/homebrew'
+elif [ -d '/home/linuxbrew/.linuxbrew' ]; then
+    HOMEBREW_PREFIX='/home/linuxbrew/.linuxbrew'
+fi
+if [ -n "$HOMEBREW_PREFIX" ]; then
+    eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
+    for i in "$HOMEBREW_PREFIX/etc/bash_completion.d"/*; do
+        . "$i"
+    done
 fi
 
 # local overrides
@@ -56,24 +46,22 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # android
 if [ -d "$HOME/Library/Android/sdk" ]; then
-	export ANDROID_HOME="$HOME/Library/Android/sdk"
-	export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$PATH"
+    export ANDROID_HOME="$HOME/Library/Android/sdk"
+    export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$PATH"
 fi
 
 # git
 alias g='git'
-[ -f "/usr/share/bash-completion/completions/git" ] && . "/usr/share/bash-completion/completions/git"
-[ -f "/usr/lib/git-core/git-sh-prompt" ] && . "/usr/lib/git-core/git-sh-prompt"
 __git_complete g __git_main
 git-clean() {
-	git fetch -p
-	for branch in `git for-each-ref --format '%(refname) %(upstream:track)' refs/heads | awk '$2 == "[gone]" {sub("refs/heads/", "", $1); print $1}'`
-	do
-		git branch -D $branch
-	done
+    git fetch -p
+    for branch in `git for-each-ref --format '%(refname) %(upstream:track)' refs/heads | awk '$2 == "[gone]" {sub("refs/heads/", "", $1); print $1}'`
+    do
+        git branch -D $branch
+    done
 }
 git-fixup() {
-	git commit --fixup="$1" && git rebase -i "$1^" --autosquash --update-refs
+    git commit --fixup="$1" && git rebase -i "$1^" --autosquash --update-refs
 }
 
 # java
@@ -84,13 +72,14 @@ alias reset-launchpad='defaults write com.apple.dock ResetLaunchPad -bool true &
 
 # node
 if which n >/dev/null; then
-	export N_PREFIX="$HOME/.local"
-	export N_PRESERVE_NPM=1
+    export N_PREFIX="$HOME/.local"
+    export N_PRESERVE_NPM=1
+    export N_PRESERVE_COREPACK=1
 fi
 
 # postgres
 psql-local() {
-	psql postgres://$1:$1@localhost:5432/$1?sslmode=disable
+    psql postgres://$1:$1@localhost:5432/$1?sslmode=disable
 }
 
 # ruby
