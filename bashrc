@@ -65,6 +65,9 @@ git-fixup() {
     git commit --fixup="$1" && git rebase -i "$1^" --autosquash --update-refs
 }
 
+# go
+[ -d "$HOME/go/bin" ] && export PATH="$HOME/go/bin:$PATH"
+
 # java
 /usr/libexec/java_home -v 1.8 >/dev/null 2>&1 && export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
 
