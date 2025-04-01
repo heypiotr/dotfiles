@@ -7,6 +7,9 @@ ln -sfvn ${BASEDIR}/bashrc ~/.bashrc
 ln -sfvn ${BASEDIR}/bash_profile ~/.bash_profile
 ln -sfvn ${BASEDIR}/inputrc ~/.inputrc
 
+# ghostty
+ln -sfvn ${BASEDIR}/ghostty ~/Library/Application\ Support/com.mitchellh.ghostty/config
+
 # git
 ln -sfvn ${BASEDIR}/gitconfig ~/.gitconfig
 ln -sfvn ${BASEDIR}/gitignore.global ~/.gitignore.global
