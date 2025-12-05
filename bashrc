@@ -16,6 +16,12 @@ export EDITOR=vim
 export LSCOLORS=exfxcxafbxgxdxabagacad
 export LS_COLORS='di=34:ln=35:so=32:pi=30;45:ex=31:bd=36:cd=33:su=30;41:sg=30;46:tw=30;42:ow=30;43:st=34'
 
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
+
 alias ls='ls --color=auto'
 alias l='ls'
 alias la='ls -A'
@@ -34,11 +40,14 @@ elif [ -d '/home/linuxbrew/.linuxbrew' ]; then
     HOMEBREW_PREFIX='/home/linuxbrew/.linuxbrew'
 fi
 if [ -n "$HOMEBREW_PREFIX" ]; then
-    [ -r "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ] && . "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
     eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
-    for i in "$HOMEBREW_PREFIX/etc/bash_completion.d"/*; do
-        . "$i"
-    done
+    # only enable completion when interactive and attached to a TTY
+    if [[ $- == *i* ]] && [ -t 1 ] && [ -r "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ]; then
+        . "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
+        for i in "$HOMEBREW_PREFIX/etc/bash_completion.d"/*; do
+            . "$i"
+        done
+    fi
 fi
 
 # local overrides
@@ -53,9 +62,9 @@ fi
 
 # git
 alias g='git'
-__git_complete g __git_main
+[[ $- == *i* ]] && [ -t 1 ] && __git_complete g __git_main
 git-clean() {
-    git fetch -p
+    git fetch --prune --prune-tags
     for branch in `git for-each-ref --format '%(refname) %(upstream:track)' refs/heads | awk '$2 == "[gone]" {sub("refs/heads/", "", $1); print $1}'`
     do
         git branch -D $branch
@@ -63,6 +72,10 @@ git-clean() {
 }
 git-fixup() {
     git commit --fixup="$1" && git rebase -i "$1^" --autosquash --update-refs
+}
+git-main() {
+    branch=$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')
+    git co $branch && git pull && git-clean
 }
 
 # go
